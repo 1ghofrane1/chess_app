@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ChessService } from './service/ChessService';
+import ChessBoard from "./components/ChessBoard";
+
 
 // Service pour gérer l'état du jeu
 
@@ -50,42 +52,12 @@ export default function ChessApp() {
     }}>
       <div>
         <h1 style={{ marginBottom: '1rem', color: '#333' }}>Échiquier Libre</h1>
-        <div style={{
-          display: 'inline-block',
-          border: '4px solid #8B4513',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-        }}>
-          {board.map((row, rowIndex) => (
-            <div key={rowIndex} style={{ display: 'flex' }}>
-              {row.map((piece, colIndex) => {
-                const isLight = (rowIndex + colIndex) % 2 === 0;
-                const selected = isSelected(rowIndex, colIndex);
-                
-                return (
-                  <div
-                    key={colIndex}
-                    onClick={() => handleSquareClick(rowIndex, colIndex)}
-                    style={{
-                      width: '70px',
-                      height: '70px',
-                      backgroundColor: selected ? '#7cb342' : (isLight ? '#f0d9b5' : '#b58863'),
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '48px',
-                      cursor: 'pointer',
-                      userSelect: 'none',
-                      transition: 'background-color 0.2s',
-                      border: selected ? '3px solid #558b2f' : 'none'
-                    }}
-                  >
-                    {piece}
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        <ChessBoard
+          board={board}
+          selectedSquare={selectedSquare}
+          onSquareClick={handleSquareClick}
+        />
+
         <button
           onClick={resetBoard}
           style={{
