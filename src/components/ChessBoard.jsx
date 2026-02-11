@@ -71,7 +71,6 @@ export default function ChessBoard({ board, selectedSquare, legalMoves = [], onS
                   <div style={{
                     position: "absolute",
                     inset: 0,
-                    borderRadius: "0",
                     border: "5px solid rgba(0,0,0,0.22)",
                     pointerEvents: "none",
                     borderRadius: "50%",
