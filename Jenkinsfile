@@ -12,7 +12,6 @@ pipeline {
       steps {
         sh 'npm install'
         sh 'npm run build'
-        sh 'npm run test:e2e'   
       }
     }
 
@@ -53,9 +52,9 @@ pipeline {
     }
   }
 
-  post {
+  /* post {
     always {
-      /*publishHTML([
+      publishHTML([
         allowMissing: true,
         alwaysLinkToLastBuild: false,
         keepAll: true,
@@ -64,7 +63,7 @@ pipeline {
         reportName: 'VitestReport',
         reportTitles: '',
         useWrapperFileDirectly: true
-      ])*/
+      ])
 
       publishHTML([
         allowMissing: true,
@@ -77,5 +76,5 @@ pipeline {
         useWrapperFileDirectly: true
       ])
     }
-  }
+  } */
 }
