@@ -56,7 +56,7 @@ pipeline {
 
   post {
     always {
-      publishHTML([
+      /*publishHTML([
         allowMissing: true,
         alwaysLinkToLastBuild: false,
         keepAll: true,
@@ -65,7 +65,7 @@ pipeline {
         reportName: 'VitestReport',
         reportTitles: '',
         useWrapperFileDirectly: true
-      ])
+      ])*/
 
       publishHTML([
         allowMissing: true,
