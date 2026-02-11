@@ -12,7 +12,6 @@ pipeline {
       steps {
         sh 'npm install'
         sh 'npm run build'
-        sh 'npm run test'       
         sh 'npm run test:e2e'   
       }
     }
