@@ -10,6 +10,9 @@ services:
       - jenkins-data:/var/jenkins_home:rw
     environment:
       - DOCKER_TLS_CERTDIR=/certs
+    networks:
+      - jenkins-net
+
   jenkins:
     build: .
     restart: always
@@ -20,10 +23,18 @@ services:
       - jenkins-data:/var/jenkins_home:rw
       - jenkins-docker-certs:/certs/client:ro
     environment:
-      - JAVA_OPTS="-Dhudson.model.DirectoryBrowserSupport.CSP="
+      - JAVA_OPTS=-Dhudson.model.DirectoryBrowserSupport.CSP=
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
       - DOCKER_TLS_VERIFY=1
+    depends_on:
+      - docker
+    networks:
+      - jenkins-net
+
 volumes:
   jenkins-data:
   jenkins-docker-certs:
+
+networks:
+  jenkins-net:
